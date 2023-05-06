@@ -116,13 +116,13 @@ def game():
         while True:
             cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
             
-            if (cor == 'G'):
+            if (cor == 'G' or cor == 'g'):
                 move = jogada_verdes(tabuleiro)
 
-            elif (cor == 'Y'):
+            elif (cor == 'Y' or cor == 'y'):
                 move = jogada_amarelas(tabuleiro)
 
-            elif (cor == 'R'):
+            elif (cor == 'R' or cor == 'r'):
                 move = jogada_vermelhas(tabuleiro)
 
             else:
