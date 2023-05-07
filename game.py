@@ -20,7 +20,6 @@ def printcasa(casa):
         return '   '
     
 def showtabuleiro(tabuleiro):
-    print("\n")
     print(printcasa(tabuleiro['1-A']) + '|' + printcasa(tabuleiro['1-B'])+ '|' + printcasa(tabuleiro['1-C'])+ '|' + printcasa(tabuleiro['1-D']))
     print('---------------')
     print(printcasa(tabuleiro['2-A']) + '|' + printcasa(tabuleiro['2-B'])+ '|' + printcasa(tabuleiro['2-C'])+ '|' + printcasa(tabuleiro['2-D']))
@@ -104,7 +103,8 @@ def jogada_vermelhas(tabuleiro):
         print('\nPosição Invalida\n')
         return False
 
-
+## Determinar vitoria (a Fazer)
+## Jogadores (a Fazer, aparecer na tela o player que esta a jogar)
 
 def game():
     tabuleiro = maketabuleiro()
