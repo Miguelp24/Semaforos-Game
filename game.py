@@ -105,13 +105,34 @@ def jogada_vermelhas(tabuleiro):
 
 ## Determinar vitoria (a Fazer)
 ## Jogadores (a Fazer, aparecer na tela o player que esta a jogar)
+def changeplayer(p1, p2):
+
+    if(p1 == False):
+        print("\nPlayer 1\n")
+    elif(p2 == False):
+        print("\nPlayer 2\n")
+
+
+
 
 def game():
     tabuleiro = maketabuleiro()
-
+    p1 = False
+    p2 = False
     
     while True:
         showtabuleiro(tabuleiro)
+        
+        if (p1 == False):
+            changeplayer(p1, p2)
+            p1 = True
+            p2 = False
+
+        elif (p2 == False):
+            changeplayer(p1, p2)
+            p2 = True
+            p1 = False
+        
 
         while True:
             cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
@@ -139,8 +160,10 @@ def game():
 
 # MENU
 def menu():
-
+    
+    print("\nJOGO DOS SEMÁFOROS")
     print("\n\n----- MENU -----\n\n")
+    
     escolha = int(input("O que quer fazer? \n(1) Regras \n(2) Jogar 1vs1 \n(3) Sair \n: "))
 
     if (escolha == 1):
