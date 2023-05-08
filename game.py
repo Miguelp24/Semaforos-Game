@@ -168,13 +168,36 @@ def vitoria(tabuleiro):
         return False   
 
 
-## Jogadores (a Fazer, aparecer na tela o player que esta a jogar)
+## Jogadores 
 def changeplayer(p1, p2, p1_name, p2_name):
 
     if(p1 == False):
         print("--- Player " + p1_name + " ---\n")
     elif(p2 == False):
         print("--- Player " + p2_name + " ---\n")
+
+
+def escolhercor(tabuleiro):
+    while True:
+            cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
+            
+            if (cor == 'G' or cor == 'g'):
+                move = jogada_verdes(tabuleiro)
+
+            elif (cor == 'Y' or cor == 'y'):
+                move = jogada_amarelas(tabuleiro)
+
+            elif (cor == 'R' or cor == 'r'):
+                move = jogada_vermelhas(tabuleiro)
+
+            else:
+                print("\n\nCor invalida, tente novamente.")
+                escolhercor(tabuleiro)
+
+
+            showtabuleiro(tabuleiro)
+
+            
 
 
 def game():
@@ -184,6 +207,7 @@ def game():
     fim = True
     p1 = False
     p2 = False
+    move = 0
     
     while (fim == True):
         showtabuleiro(tabuleiro)
@@ -198,27 +222,11 @@ def game():
             p2 = True
             p1 = False
         
+        move = escolhercor(tabuleiro)
 
-        while True:
-            cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
-            
-            if (cor == 'G' or cor == 'g'):
-                move = jogada_verdes(tabuleiro)
-
-            elif (cor == 'Y' or cor == 'y'):
-                move = jogada_amarelas(tabuleiro)
-
-            elif (cor == 'R' or cor == 'r'):
-                move = jogada_vermelhas(tabuleiro)
-
-            else:
-                print("\n\nCor invalida, tente novamente.")
-
-
-            if move:
-                break
-
-            showtabuleiro(tabuleiro)
+        if move:
+            break
+        
         fim = vitoria(tabuleiro)
         ##showtabuleiro(tabuleiro)
 
@@ -244,6 +252,7 @@ def menu():
 
     else:
         print("Escolha invalida, tente novamente.")
+        menu()
 
 menu()
 
