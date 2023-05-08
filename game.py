@@ -167,7 +167,7 @@ def vitoria(tabuleiro):
         print("\n\nFim do jogo! Vitória")     
         return False   
 
-
+#OLA
 
 ## Jogadores (a Fazer, aparecer na tela o player que esta a jogar)
 def changeplayer(p1, p2, p1_name, p2_name):
