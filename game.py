@@ -8,8 +8,10 @@ def maketabuleiro():
     col = ['A','B','C','D']
     for l in lin :
         for c in col :
-            key = str(l) + '-' + str(c)
-            tabuleiro.setdefault(key, False)
+
+            key = str(l) + str(c)
+            tabuleiro.setdefault(key,False)
+
     #print('DEBUG: '+str(tabuleiro))
     return tabuleiro
 
@@ -20,12 +22,12 @@ def printcasa(casa):
         return '   '
     
 def showtabuleiro(tabuleiro):
-    print("\n")
-    print(printcasa(tabuleiro['1-A']) + '|' + printcasa(tabuleiro['1-B'])+ '|' + printcasa(tabuleiro['1-C'])+ '|' + printcasa(tabuleiro['1-D']))
+
+    print(printcasa(tabuleiro['1A']) + '|' + printcasa(tabuleiro['1B'])+ '|' + printcasa(tabuleiro['1C'])+ '|' + printcasa(tabuleiro['1D']))
     print('---------------')
-    print(printcasa(tabuleiro['2-A']) + '|' + printcasa(tabuleiro['2-B'])+ '|' + printcasa(tabuleiro['2-C'])+ '|' + printcasa(tabuleiro['2-D']))
+    print(printcasa(tabuleiro['2A']) + '|' + printcasa(tabuleiro['2B'])+ '|' + printcasa(tabuleiro['2C'])+ '|' + printcasa(tabuleiro['2D']))
     print('---------------')
-    print(printcasa(tabuleiro['3-A']) + '|' + printcasa(tabuleiro['3-B'])+ '|' + printcasa(tabuleiro['3-C'])+ '|' + printcasa(tabuleiro['3-D']))
+    print(printcasa(tabuleiro['3A']) + '|' + printcasa(tabuleiro['3B'])+ '|' + printcasa(tabuleiro['3C'])+ '|' + printcasa(tabuleiro['3D']))
     print("\n")
     
 ######
@@ -40,7 +42,7 @@ def jogada_verdes(tabuleiro):
 
     for r in lin :
         for c in col :
-            key = str(r) + '-' + str(c)
+            key = str(r) + str(c)
             if key == move :
                 valida = '1'
 
@@ -65,7 +67,7 @@ def jogada_amarelas(tabuleiro):
 
     for r in lin :
         for c in col :
-            key = str(r) + '-' + str(c)
+            key = str(r) + str(c)
             if key == move :
                 valida = '1'
 
@@ -90,7 +92,7 @@ def jogada_vermelhas(tabuleiro):
 
     for r in lin :
         for c in col :
-            key = str(r) + '-' + str(c)
+            key = str(r) + str(c)
             if key == move :
                 valida = '1'
 
@@ -106,6 +108,76 @@ def jogada_vermelhas(tabuleiro):
 
 ## Determinar vitoria (a Fazer)
 
+def vitoria(tabuleiro):
+    
+    ##if (tabuleiro['1A'] == tabuleiro['2A'] and tabuleiro['1A'] == tabuleiro['3A']):
+      ##  print("Fim do Jogo! Vitória")
+    ##elif (tabuleiro['1B']== tabuleiro['2B'] and tabuleiro['1B'] == tabuleiro['3B']):
+      ##  print("Fim do Jogo! Vitória")
+    lin = ['1','2','3']
+    col = ['A','B','C','D']
+
+    a = ''
+    b = 0
+    n = ' '
+    v = False
+    
+
+    for r in lin:
+        
+        for c in col:
+            a = str(r)+str(c)
+            if(tabuleiro[a]==False):
+                break
+            if(tabuleiro[a] == n ):
+                b = b + 1
+            if (b == 2): 
+                v = True
+                break
+            n = tabuleiro[a]
+
+        if (b == 2):
+            break
+        return True
+    
+
+    b=0
+    n = ''
+
+    for c in col:
+        for r in lin:
+            a = str(r)+str(c)
+            if(tabuleiro[a]==False):
+                break
+            if(tabuleiro[a] == n ):
+                b = b + 1
+            if (b == 2): 
+                v = True
+                break
+            if(n == False):
+                break
+            else:
+                n = tabuleiro[a]
+
+        if (b == 2):
+            break
+        return True
+    
+    if (v == True):
+        print("\n\nFim do jogo! Vitória")     
+        return False   
+
+    
+    
+
+
+
+
+
+
+
+
+
 ## Jogadores (a Fazer, aparecer na tela o player que esta a jogar)
 def changeplayer(p1, p2, p1_name, p2_name):
 
@@ -119,10 +191,11 @@ def game():
     p1_name = input("\nInsira o nome do Player 1: ")
     p2_name = input("\nInsira o nome do Player 2: ")
     tabuleiro = maketabuleiro()
+    fim = True
     p1 = False
     p2 = False
     
-    while True:
+    while (fim == True):
         showtabuleiro(tabuleiro)
         
         if (p1 == False):
@@ -156,7 +229,8 @@ def game():
                 break
 
             showtabuleiro(tabuleiro)
-        showtabuleiro(tabuleiro)
+        fim = vitoria(tabuleiro)
+        ##showtabuleiro(tabuleiro)
 
 
 
