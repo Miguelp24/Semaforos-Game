@@ -8,8 +8,10 @@ def maketabuleiro():
     col = ['A','B','C','D']
     for l in lin :
         for c in col :
+
             key = str(l) + str(c)
             tabuleiro.setdefault(key,False)
+
     #print('DEBUG: '+str(tabuleiro))
     return tabuleiro
 
@@ -20,6 +22,7 @@ def printcasa(casa):
         return '   '
     
 def showtabuleiro(tabuleiro):
+
     print(printcasa(tabuleiro['1A']) + '|' + printcasa(tabuleiro['1B'])+ '|' + printcasa(tabuleiro['1C'])+ '|' + printcasa(tabuleiro['1D']))
     print('---------------')
     print(printcasa(tabuleiro['2A']) + '|' + printcasa(tabuleiro['2B'])+ '|' + printcasa(tabuleiro['2C'])+ '|' + printcasa(tabuleiro['2D']))
@@ -104,6 +107,7 @@ def jogada_vermelhas(tabuleiro):
         return False
 
 ## Determinar vitoria (a Fazer)
+
 def vitoria(tabuleiro):
     
     ##if (tabuleiro['1A'] == tabuleiro['2A'] and tabuleiro['1A'] == tabuleiro['3A']):
@@ -173,14 +177,37 @@ def vitoria(tabuleiro):
 
 
 
+
 ## Jogadores (a Fazer, aparecer na tela o player que esta a jogar)
+def changeplayer(p1, p2, p1_name, p2_name):
+
+    if(p1 == False):
+        print("--- Player " + p1_name + " ---\n")
+    elif(p2 == False):
+        print("--- Player " + p2_name + " ---\n")
+
 
 def game():
+    p1_name = input("\nInsira o nome do Player 1: ")
+    p2_name = input("\nInsira o nome do Player 2: ")
     tabuleiro = maketabuleiro()
     fim = True
+    p1 = False
+    p2 = False
     
     while (fim == True):
         showtabuleiro(tabuleiro)
+        
+        if (p1 == False):
+            changeplayer(p1, p2, p1_name, p2_name)
+            p1 = True
+            p2 = False
+
+        elif (p2 == False):
+            changeplayer(p1, p2, p1_name, p2_name)
+            p2 = True
+            p1 = False
+        
 
         while True:
             cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
@@ -197,6 +224,7 @@ def game():
             else:
                 print("\n\nCor invalida, tente novamente.")
 
+
             if move:
                 break
 
@@ -209,8 +237,10 @@ def game():
 
 # MENU
 def menu():
-
+    
+    print("\nJOGO DOS SEMÁFOROS")
     print("\n\n----- MENU -----\n\n")
+    
     escolha = int(input("O que quer fazer? \n(1) Regras \n(2) Jogar 1vs1 \n(3) Sair \n: "))
 
     if (escolha == 1):
