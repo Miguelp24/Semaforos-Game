@@ -9,7 +9,7 @@ def maketabuleiro():
     for l in lin :
         for c in col :
             key = str(l) + '-' + str(c)
-            tabuleiro.setdefault(key,'0')
+            tabuleiro.setdefault(key, False)
     #print('DEBUG: '+str(tabuleiro))
     return tabuleiro
 
@@ -44,7 +44,7 @@ def jogada_verdes(tabuleiro):
             if key == move :
                 valida = '1'
 
-    if tabuleiro[move] != '0':
+    if tabuleiro[move] != False:
         print('\nNão podes jogar ai\n')
         return False
     elif valida:
