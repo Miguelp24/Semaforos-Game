@@ -167,15 +167,6 @@ def vitoria(tabuleiro):
         print("\n\nFim do jogo! Vitória")     
         return False   
 
-    
-    
-
-
-
-
-
-
-
 
 
 ## Jogadores (a Fazer, aparecer na tela o player que esta a jogar)
