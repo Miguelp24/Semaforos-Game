@@ -20,6 +20,7 @@ def printcasa(casa):
         return '   '
     
 def showtabuleiro(tabuleiro):
+    print("\n")
     print(printcasa(tabuleiro['1-A']) + '|' + printcasa(tabuleiro['1-B'])+ '|' + printcasa(tabuleiro['1-C'])+ '|' + printcasa(tabuleiro['1-D']))
     print('---------------')
     print(printcasa(tabuleiro['2-A']) + '|' + printcasa(tabuleiro['2-B'])+ '|' + printcasa(tabuleiro['2-C'])+ '|' + printcasa(tabuleiro['2-D']))
@@ -104,18 +105,19 @@ def jogada_vermelhas(tabuleiro):
         return False
 
 ## Determinar vitoria (a Fazer)
+
 ## Jogadores (a Fazer, aparecer na tela o player que esta a jogar)
-def changeplayer(p1, p2):
+def changeplayer(p1, p2, p1_name, p2_name):
 
     if(p1 == False):
-        print("\nPlayer 1\n")
+        print("--- Player " + p1_name + " ---\n")
     elif(p2 == False):
-        print("\nPlayer 2\n")
-
-
+        print("--- Player " + p2_name + " ---\n")
 
 
 def game():
+    p1_name = input("\nInsira o nome do Player 1: ")
+    p2_name = input("\nInsira o nome do Player 2: ")
     tabuleiro = maketabuleiro()
     p1 = False
     p2 = False
@@ -124,12 +126,12 @@ def game():
         showtabuleiro(tabuleiro)
         
         if (p1 == False):
-            changeplayer(p1, p2)
+            changeplayer(p1, p2, p1_name, p2_name)
             p1 = True
             p2 = False
 
         elif (p2 == False):
-            changeplayer(p1, p2)
+            changeplayer(p1, p2, p1_name, p2_name)
             p2 = True
             p1 = False
         
@@ -148,6 +150,7 @@ def game():
 
             else:
                 print("\n\nCor invalida, tente novamente.")
+
 
             if move:
                 break
