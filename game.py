@@ -197,6 +197,9 @@ def escolhercor(tabuleiro):
 
             showtabuleiro(tabuleiro)
 
+            if move:
+                break    ## Não sei porque mas quando tem o brak se erares uma vez a escolha depois buga,
+                         ## mas se tirar o break depois não para o loop e não troca o player
             
 
 
@@ -207,7 +210,6 @@ def game():
     fim = True
     p1 = False
     p2 = False
-    move = 0
     
     while (fim == True):
         showtabuleiro(tabuleiro)
@@ -222,10 +224,7 @@ def game():
             p2 = True
             p1 = False
         
-        move = escolhercor(tabuleiro)
-
-        if move:
-            break
+        escolhercor(tabuleiro)
         
         fim = vitoria(tabuleiro)
         ##showtabuleiro(tabuleiro)
