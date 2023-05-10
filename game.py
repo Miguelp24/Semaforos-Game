@@ -206,29 +206,23 @@ def changeplayer(p1, p2, p1_name, p2_name):
 def escolhercor(tabuleiro):
     
     while True:
-            cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
-            
-            if (cor == 'G' or cor == 'g'):
-                move = jogada_verdes(tabuleiro)
+        cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
+        
+        if (cor == 'G' or cor == 'g'):
+            move = jogada_verdes(tabuleiro)
+        elif (cor == 'Y' or cor == 'y'):
+            move = jogada_amarelas(tabuleiro)
+        elif (cor == 'R' or cor == 'r'):
+            move = jogada_vermelhas(tabuleiro)
+        else:
+            print("\n\nCor invalida, tente novamente.")
+            continue
 
-            elif (cor == 'Y' or cor == 'y'):
-                move = jogada_amarelas(tabuleiro)
+        showtabuleiro(tabuleiro)
 
-            elif (cor == 'R' or cor == 'r'):
-                move = jogada_vermelhas(tabuleiro)
+        if move:
+            break
 
-            else:
-                print("\n\nCor invalida, tente novamente.")
-                escolhercor(tabuleiro)
-
-
-            showtabuleiro(tabuleiro)
-
-            if move:
-                
-               break   ## Não sei porque mas quando tem o berak se erares uma vez a escolha depois buga,
-                         ## mas se tirar o break depois não para o loop e não troca o player
-            
 
 
 def game():
