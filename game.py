@@ -110,10 +110,6 @@ def jogada_vermelhas(tabuleiro):
 
 def vitoria(tabuleiro):
     
-    ##if (tabuleiro['1A'] == tabuleiro['2A'] and tabuleiro['1A'] == tabuleiro['3A']):
-      ##  print("Fim do Jogo! Vitória")
-    ##elif (tabuleiro['1B']== tabuleiro['2B'] and tabuleiro['1B'] == tabuleiro['3B']):
-      ##  print("Fim do Jogo! Vitória")
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
@@ -131,13 +127,14 @@ def vitoria(tabuleiro):
         for c in col:
             a = str(r)+str(c)
             if(tabuleiro[a]==False):
+                n = ''
                 continue
             if(tabuleiro[a] == n ):
                 b = b + 1
             if (b == 2): 
                 v = True
                 continue
-            n = tabuleiro[a]
+            
 
         if (b == 2):
             break
@@ -233,6 +230,7 @@ def escolhercor(tabuleiro):
 def game():
     p1_name = input("\nInsira o nome do Player 1: ")
     p2_name = input("\nInsira o nome do Player 2: ")
+    p_name = ""
     tabuleiro = maketabuleiro()
     fim = True
     p1 = False
@@ -245,16 +243,20 @@ def game():
             changeplayer(p1, p2, p1_name, p2_name)
             p1 = True
             p2 = False
+            p_name = p1_name
 
         elif (p2 == False):
             changeplayer(p1, p2, p1_name, p2_name)
             p2 = True
             p1 = False
+            p_name = p2_name
         
         escolhercor(tabuleiro)
         
         fim = vitoria(tabuleiro)
-        ##showtabuleiro(tabuleiro)
+
+    print("\nGanhou o Player " + p_name + "\n\n")
+
 
 
 
