@@ -204,6 +204,7 @@ def changeplayer(p1, p2, p1_name, p2_name):
 
 
 def escolhercor(tabuleiro):
+    
     while True:
             cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
             
@@ -224,7 +225,8 @@ def escolhercor(tabuleiro):
             showtabuleiro(tabuleiro)
 
             if move:
-                break    ## Não sei porque mas quando tem o brak se erares uma vez a escolha depois buga,
+                
+               break   ## Não sei porque mas quando tem o berak se erares uma vez a escolha depois buga,
                          ## mas se tirar o break depois não para o loop e não troca o player
             
 
