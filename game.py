@@ -124,48 +124,75 @@ def vitoria(tabuleiro):
     
 
     for r in lin:
-        
+        a = ''
+        b = 0
+        n = ' '
+
         for c in col:
             a = str(r)+str(c)
             if(tabuleiro[a]==False):
-                break
+                continue
             if(tabuleiro[a] == n ):
                 b = b + 1
             if (b == 2): 
                 v = True
-                break
+                continue
             n = tabuleiro[a]
 
         if (b == 2):
             break
-        return True
+        
     
+    if (v == True):
+            print("\n\nFim do jogo! Vitória")     
+            return False  
 
-    b=0
+    a = ''
+    b = 0
     n = ''
 
     for c in col:
+        a = ''
+        b = 0
+        n = ''
         for r in lin:
+            
             a = str(r)+str(c)
             if(tabuleiro[a]==False):
-                break
+                continue
             if(tabuleiro[a] == n ):
                 b = b + 1
             if (b == 2): 
                 v = True
-                break
+                continue
             if(n == False):
-                break
+                continue
             else:
                 n = tabuleiro[a]
 
         if (b == 2):
             break
-        return True
+        
     
     if (v == True):
         print("\n\nFim do jogo! Vitória")     
-        return False   
+        return False  
+    
+    if (tabuleiro['1A'] == tabuleiro['2B'] and tabuleiro['1A']==tabuleiro['3C'] and tabuleiro['1A'] != False and tabuleiro['2B'] != False and tabuleiro['3C'] != False):
+        print("\n\nFim do jogo! Vitória")     
+        return False
+    if (tabuleiro['1B'] == tabuleiro['2C'] and tabuleiro['1B']==tabuleiro['3D'] and tabuleiro['1B'] != False and tabuleiro['2C'] != False and tabuleiro['3D'] != False):
+        print("\n\nFim do jogo! Vitória")     
+        return False
+    if (tabuleiro['1C'] == tabuleiro['2B'] and tabuleiro['1C']==tabuleiro['3A'] and tabuleiro['1C'] != False and tabuleiro['2B'] != False and tabuleiro['3A'] != False):
+        print("\n\nFim do jogo! Vitória")     
+        return False
+    if (tabuleiro['1D'] == tabuleiro['2C'] and tabuleiro['1D']==tabuleiro['3B'] and tabuleiro['1D'] != False and tabuleiro['2C'] != False and tabuleiro['3B'] != False):
+        print("\n\nFim do jogo! Vitória")     
+        return False
+
+    return True
+ 
 
 
 ## Jogadores 
