@@ -129,8 +129,10 @@ def vitoria(tabuleiro):
             if(tabuleiro[a]==False):
                 n = ''
                 continue
-            if(tabuleiro[a] == n ):
+            elif(tabuleiro[a] == n ):
                 b = b + 1
+            else:
+                n = tabuleiro[a]
             if (b == 2): 
                 v = True
                 continue
