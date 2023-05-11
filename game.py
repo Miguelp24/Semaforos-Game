@@ -34,6 +34,7 @@ def showtabuleiro(tabuleiro):
 
 #Jogadas das peças Verdes
 def jogada_verdes(tabuleiro):
+    verdes = 8
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
@@ -46,11 +47,16 @@ def jogada_verdes(tabuleiro):
             if key == move :
                 valida = '1'
 
+    if (verdes == 0):
+        print("Acabaram as peças verdes")
+        return False
+
     if tabuleiro[move] != False:
         print('\nNão podes jogar ai\n')
         return False
     elif valida:
         tabuleiro[move] = 'G'
+        verdes = verdes - 1
         return True
     else : 
         print('\nPosição Invalida\n')
