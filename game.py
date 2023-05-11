@@ -281,17 +281,14 @@ def escolhaposiçao_bot(tabuleiro):
 
         if(tabuleiro[move] == False):
             tabuleiro[move] = 'G'
-            showtabuleiro(tabuleiro)
             valida = True
 
         elif(tabuleiro[move] == 'G'):
             tabuleiro[move] = 'Y'
-            showtabuleiro(tabuleiro)
             valida = True
 
         elif(tabuleiro[move] == 'Y'):
             tabuleiro[move] = 'R'
-            showtabuleiro(tabuleiro)
             valida = True
 
     return False
@@ -299,7 +296,8 @@ def escolhaposiçao_bot(tabuleiro):
 
 
 def bot():
-    name_bot = input("Qual é o nome do BOT?: ")
+    name_bot = "BOT Diogo"
+    print("\nOlá eu sou o BOT Diogo, vamos jogar?")
     p1_name = input("\nInsira o seu nome: ")
     p_name = ""
     tabuleiro = maketabuleiro()
