@@ -1,4 +1,5 @@
 import sys
+import random
 
 ## Tabuleiro
 
@@ -12,7 +13,6 @@ def maketabuleiro():
             key = str(l) + str(c)
             tabuleiro.setdefault(key,False)
 
-    #print('DEBUG: '+str(tabuleiro))
     return tabuleiro
 
 def printcasa(casa):
@@ -106,7 +106,8 @@ def jogada_vermelhas(tabuleiro):
         print('\nPosição Invalida\n')
         return False
 
-## Determinar vitoria (a Fazer)
+
+## Determinar vitoria 
 
 def vitoria(tabuleiro):
     
@@ -257,6 +258,74 @@ def game():
 
 
 
+## BOT
+    
+def escolhaposiçao_bot(tabuleiro):
+    random.seed()
+    opcoes_linha = ('1','2','3')
+    opcoes_coluna = ('A','B','C','D')
+    valida = False
+
+    while (valida == False):
+        opcao_lin = random.choice(opcoes_linha)
+        opcao_col = random.choice(opcoes_coluna)
+
+        move = opcao_lin + opcao_col
+
+
+        if(tabuleiro[move] == False):
+            tabuleiro[move] = 'G'
+            showtabuleiro(tabuleiro)
+            valida = True
+
+        elif(tabuleiro[move] == 'G'):
+            tabuleiro[move] = 'Y'
+            showtabuleiro(tabuleiro)
+            valida = True
+
+        elif(tabuleiro[move] == 'Y'):
+            tabuleiro[move] = 'R'
+            showtabuleiro(tabuleiro)
+            valida = True
+
+    return False
+
+
+
+def bot():
+    name_bot = input("Qual é o nome do BOT?: ")
+    p1_name = input("\nInsira o seu nome: ")
+    p_name = ""
+    tabuleiro = maketabuleiro()
+    fim = True
+    p1 = False
+    p2 = False
+    
+    while (fim == True):
+        showtabuleiro(tabuleiro)
+        
+        if (p1 == False):
+            changeplayer(p1, p2, p1_name, name_bot)
+            p1 = True
+            p2 = False
+            p_name = p1_name
+
+        elif (p2 == False):
+            changeplayer(p1, p2, p1_name, name_bot)
+            p2 = True
+            p1 = False
+            p_name = name_bot
+        
+        if (p1 == True):
+            escolhercor(tabuleiro)
+
+        elif(p2 == True):
+            escolhaposiçao_bot(tabuleiro)
+        
+        fim = vitoria(tabuleiro)
+
+    print("\nGanhou o Player " + p_name + "\n\n")
+
 
 
 # MENU
@@ -265,15 +334,16 @@ def menu():
     print("\nJOGO DOS SEMÁFOROS")
     print("\n\n----- MENU -----\n\n")
     
-    escolha = int(input("O que quer fazer? \n(1) Regras \n(2) Jogar 1vs1 \n(3) Sair \n: "))
+    escolha = int(input("O que quer fazer? \n(1) Regras \n(2) Jogar 1vs1 \n(3) Jogar com o BOT\n(4) Sair \n: "))
 
     if (escolha == 1):
         print("\nO jogo é composto por um tabuleiro de 3x4 espaços (casas) \npara ambos os jogadores. Para jogar usam-se 24 peças, 8 de \ncada cor em 3 cores distintas Verde, Amarelo e Vermelho. \nAs peças e o tabuleiro são partilhados por ambos os jogadores. \nÀ vez, cada jogador seleciona uma peça e coloca-a no \ntabuleiro. Como regra na base pode ser colocada uma peça \nverde, uma peça verde pode ser substituída por uma peça amarela e uma peça amarela pode ser \nsubstituída por uma peça vermelha. \nSe ao colocar uma peça um jogador conseguir fazer uma linha com três peças da mesma cor \nautomaticamente ganha o jogo.\n")
     
     elif (escolha == 2):
         game()
-
     elif (escolha == 3):
+        bot()
+    elif (escolha == 4):
         sys.exit()
 
     else:
