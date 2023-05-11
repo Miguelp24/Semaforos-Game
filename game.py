@@ -22,12 +22,13 @@ def printcasa(casa):
         return '   '
     
 def showtabuleiro(tabuleiro):
-
-    print(printcasa(tabuleiro['1A']) + '|' + printcasa(tabuleiro['1B'])+ '|' + printcasa(tabuleiro['1C'])+ '|' + printcasa(tabuleiro['1D']))
-    print('---------------')
-    print(printcasa(tabuleiro['2A']) + '|' + printcasa(tabuleiro['2B'])+ '|' + printcasa(tabuleiro['2C'])+ '|' + printcasa(tabuleiro['2D']))
-    print('---------------')
-    print(printcasa(tabuleiro['3A']) + '|' + printcasa(tabuleiro['3B'])+ '|' + printcasa(tabuleiro['3C'])+ '|' + printcasa(tabuleiro['3D']))
+    print( '    A   B   C   D')
+    print('')
+    print('1  ' + printcasa(tabuleiro['1A']) + '|' + printcasa(tabuleiro['1B'])+ '|' + printcasa(tabuleiro['1C'])+ '|' + printcasa(tabuleiro['1D']))
+    print('   ---------------')
+    print('2  ' + printcasa(tabuleiro['2A']) + '|' + printcasa(tabuleiro['2B'])+ '|' + printcasa(tabuleiro['2C'])+ '|' + printcasa(tabuleiro['2D']))
+    print('   ---------------')
+    print('3  ' + printcasa(tabuleiro['3A']) + '|' + printcasa(tabuleiro['3B'])+ '|' + printcasa(tabuleiro['3C'])+ '|' + printcasa(tabuleiro['3D']))
     print("\n")
     
 ######
@@ -341,8 +342,10 @@ def menu():
     escolha = int(input("O que quer fazer? \n(1) Regras \n(2) Jogar 1vs1 \n(3) Jogar com o BOT\n(4) Sair \n: "))
 
     if (escolha == 1):
-        print("\nO jogo é composto por um tabuleiro de 3x4 espaços (casas) \npara ambos os jogadores. Para jogar usam-se 24 peças, 8 de \ncada cor em 3 cores distintas Verde, Amarelo e Vermelho. \nAs peças e o tabuleiro são partilhados por ambos os jogadores. \nÀ vez, cada jogador seleciona uma peça e coloca-a no \ntabuleiro. Como regra na base pode ser colocada uma peça \nverde, uma peça verde pode ser substituída por uma peça amarela e uma peça amarela pode ser \nsubstituída por uma peça vermelha. \nSe ao colocar uma peça um jogador conseguir fazer uma linha com três peças da mesma cor \nautomaticamente ganha o jogo.\n")
-    
+        print("\nO jogo é composto por um tabuleiro de 3x4 espaços (casas) \npara ambos os jogadores. Para jogar usam-se 24 peças, 8 de \ncada cor em 3 cores distintas Verde, Amarelo e Vermelho. \nAs peças e o tabuleiro são partilhados por ambos os jogadores. \nÀ vez, cada jogador seleciona uma peça e coloca-a no \ntabuleiro. Como regra na base pode ser colocada uma peça \nverde, uma peça verde pode ser substituída por uma peça amarela e uma peça amarela pode ser \nsubstituída por uma peça vermelha. \nSe ao colocar uma peça um jogador conseguir fazer uma linha com três peças da mesma cor \nautomaticamente ganha o jogo.\n\n\n (Insira no formato LINHA COLUNA  ex.1A)\n\n")
+        i = input("ENTER para voltar ao menu ")
+        print ("\n" * 5) 
+        menu()
     elif (escolha == 2):
         game()
     elif (escolha == 3):
