@@ -57,9 +57,13 @@ def jogada_verdes(tabuleiro):
         print('\nNão podes jogar ai\n')
         return False
     elif valida:
-        tabuleiro[move] = 'G'
-        verdes = verdes - 1
-        return True
+        if verdes != 0:
+            tabuleiro[move] = 'G'
+            verdes = verdes - 1
+            return True
+        else:
+            print("Já esgotou estas peças")
+        
     else : 
         print('\nPosição Invalida\n')
         return False
@@ -69,6 +73,8 @@ def jogada_verdes(tabuleiro):
 def jogada_amarelas(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
+
+    amarelas = 8
 
     move = input("\nOnde quer jogar?: ")
     valida = '0'
@@ -83,8 +89,12 @@ def jogada_amarelas(tabuleiro):
         print('\nNão podes jogar ai\n')
         return False
     elif valida:
-        tabuleiro[move] = 'Y'
-        return True
+        if amarelas != 0:
+            tabuleiro[move] = 'Y'
+            amarelas = amarelas - 1
+            return True
+        else:
+            print("Já esgotou estas peças")
     else : 
         print('\nPosição Invalida\n')
         return False
@@ -95,6 +105,7 @@ def jogada_vermelhas(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
+    vermelhas = 8
     move = input("\nOnde quer jogar?: ")
     valida = '0'
 
@@ -108,8 +119,12 @@ def jogada_vermelhas(tabuleiro):
         print('\nNão podes jogar ai\n')
         return False
     elif valida:
-        tabuleiro[move] = 'R'
-        return True
+        if vermelhas != 0:
+            tabuleiro[move] = 'R'
+            vermelhas = vermelhas - 1
+            return True
+        else:
+            print("Já esgotou estas peças")
     else : 
         print('\nPosição Invalida\n')
         return False
