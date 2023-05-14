@@ -22,6 +22,7 @@ def printcasa(casa):
         return '   '
     
 def showtabuleiro(tabuleiro):
+    print("\n")
     print( '    A   B   C   D')
     print('')
     print('1  ' + printcasa(tabuleiro['1A']) + '|' + printcasa(tabuleiro['1B'])+ '|' + printcasa(tabuleiro['1C'])+ '|' + printcasa(tabuleiro['1D']))
