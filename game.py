@@ -35,42 +35,43 @@ def showtabuleiro(tabuleiro):
 ######
 
 #Jogadas das peças Verdes
-def jogada_verdes(tabuleiro):
-    verdes = 8
+def jogada_verdes(tabuleiro, verdes):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
-    move = input("\nOnde quer jogar?: ")
-    valida = '0'
+    if verdes != 0:
+        move = input("\nOnde quer jogar?: ")
+        valida = '0'
 
-    for r in lin :
-        for c in col :
-            key = str(r) + str(c)
-            if key == move :
-                valida = '1'
+        for r in lin :
+            for c in col :
+                key = str(r) + str(c)
+                if key == move :
+                    valida = '1'
 
-    if (verdes == 0):
-        print("Acabaram as peças verdes")
-        return False
+        if (verdes == 0):
+            print("Acabaram as peças verdes")
+            return False
 
-    if tabuleiro[move] != False:
-        print('\nNão podes jogar ai\n')
-        return False
-    elif valida:
-        if verdes != 0:
+        if tabuleiro[move] != False:
+            print('\nNão podes jogar ai\n')
+            return False
+        elif valida:
             tabuleiro[move] = 'G'
             verdes = verdes - 1
+            print(verdes)
             return True
-        else:
-            print("Já esgotou estas peças")
+            
+        else : 
+            print('\nPosição Invalida\n')
+            return False
         
-    else : 
-        print('\nPosição Invalida\n')
-        return False
+    else:
+        print("Já esgotou estas peças")
     
 
 #Jogadas das peças Amarelas
-def jogada_amarelas(tabuleiro):
+def jogada_amarelas(tabuleiro, amarelas):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
@@ -89,7 +90,7 @@ def jogada_amarelas(tabuleiro):
         print('\nNão podes jogar ai\n')
         return False
     elif valida:
-        if amarelas != 0:
+        if amarelas > 0:
             tabuleiro[move] = 'Y'
             amarelas = amarelas - 1
             return True
@@ -101,7 +102,7 @@ def jogada_amarelas(tabuleiro):
 
 
 #Jogadas das peças Vermelhas
-def jogada_vermelhas(tabuleiro):
+def jogada_vermelhas(tabuleiro, vermelhas):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
@@ -119,7 +120,7 @@ def jogada_vermelhas(tabuleiro):
         print('\nNão podes jogar ai\n')
         return False
     elif valida:
-        if vermelhas != 0:
+        if vermelhas > 0:
             tabuleiro[move] = 'R'
             vermelhas = vermelhas - 1
             return True
@@ -227,22 +228,23 @@ def changeplayer(p1, p2, p1_name, p2_name):
         print("--- Player " + p2_name + " ---\n")
 
 
-def escolhercor(tabuleiro):
+def escolhercor(tabuleiro, verdes, amarelas, vermelhas):
     
     while True:
         cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
         
+
         if (cor == 'G' or cor == 'g'):
-            move = jogada_verdes(tabuleiro)
+            move = jogada_verdes(tabuleiro, verdes)
         elif (cor == 'Y' or cor == 'y'):
-            move = jogada_amarelas(tabuleiro)
+            move = jogada_amarelas(tabuleiro, amarelas)
         elif (cor == 'R' or cor == 'r'):
-            move = jogada_vermelhas(tabuleiro)
+            move = jogada_vermelhas(tabuleiro, vermelhas)
         else:
             print("\n\nCor invalida, tente novamente.")
+            showtabuleiro(tabuleiro)
             continue
 
-        showtabuleiro(tabuleiro)
 
         if move:
             break
@@ -257,6 +259,10 @@ def game():
     fim = True
     p1 = False
     p2 = False
+
+    verdes = 8
+    amarelas = 8
+    vermelhas = 8
     
     while (fim == True):
         showtabuleiro(tabuleiro)
@@ -273,7 +279,7 @@ def game():
             p1 = False
             p_name = p2_name
         
-        escolhercor(tabuleiro)
+        escolhercor(tabuleiro, verdes, amarelas, vermelhas)
         
         fim = vitoria(tabuleiro)
 
