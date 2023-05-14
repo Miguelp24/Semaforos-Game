@@ -358,10 +358,18 @@ def menu():
         print("Escolha invalida, tente novamente.")
         menu()
 
+
+
+# INTRO
+
+print("\nJOGO DOS SEMÁFOROS")
+print("\n\n Realizado por: ")
+print("\nal78202 - Miguel Pinto")
+print("al78202 - Bárbara Ferreira")
+print("al78202 - José Pedro Cruz")
+
+i = input("\n\nPressione qualquer tecla para iniciar. ")
 menu()
-
-
-
 
 
 
