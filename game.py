@@ -32,41 +32,34 @@ def showtabuleiro(tabuleiro):
     print('3  ' + printcasa(tabuleiro['3A']) + '|' + printcasa(tabuleiro['3B'])+ '|' + printcasa(tabuleiro['3C'])+ '|' + printcasa(tabuleiro['3D']))
     print("\n")
     
-######
 
 #Jogadas das peças Verdes
 def jogada_verdes(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
-    verdes = int
+    
+    move = input("\nOnde quer jogar?: ")
+    valida = '0'
 
-    if verdes <= 8:
-        move = input("\nOnde quer jogar?: ")
-        valida = '0'
+    for r in lin :
+        for c in col :
+            key = str(r) + str(c)
+            if key == move :
+                valida = '1'
 
-        for r in lin :
-            for c in col :
-                key = str(r) + str(c)
-                if key == move :
-                    valida = '1'
-
-        if tabuleiro[move] != False:
-            print('\nNão podes jogar ai\n')
-            return False
+    if tabuleiro[move] != False:
+        print('\nNão podes jogar ai\n')
+        return False
         
-        elif valida:
-            tabuleiro[move] = 'G'
-            verdes = verdes + 1
-            print(verdes)
-            return True
+    elif valida:
+        tabuleiro[move] = 'G'
+        return True 
             
-        else : 
-            print('\nPosição Invalida\n')
-            return False
+    else : 
+        print('\nPosição Invalida\n')
+        return False
         
-    else:
-        print("Já esgotou estas peças")
     
 
 
@@ -77,8 +70,7 @@ def jogada_amarelas(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
-    amarelas = 8
-
+    
     move = input("\nOnde quer jogar?: ")
     valida = '0'
 
@@ -92,23 +84,19 @@ def jogada_amarelas(tabuleiro):
         print('\nNão podes jogar ai\n')
         return False
     elif valida:
-        if amarelas > 0:
-            tabuleiro[move] = 'Y'
-            amarelas = amarelas - 1
-            return True
-        else:
-            print("Já esgotou estas peças")
+        tabuleiro[move] = 'Y'
+        return True
+        
     else : 
         print('\nPosição Invalida\n')
         return False
-
+ 
 
 #Jogadas das peças Vermelhas
 def jogada_vermelhas(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
-    vermelhas = 8
     move = input("\nOnde quer jogar?: ")
     valida = '0'
 
@@ -122,16 +110,12 @@ def jogada_vermelhas(tabuleiro):
         print('\nNão podes jogar ai\n')
         return False
     elif valida:
-        if vermelhas > 0:
-            tabuleiro[move] = 'R'
-            vermelhas = vermelhas - 1
-            return True
-        else:
-            print("Já esgotou estas peças")
+        tabuleiro[move] = 'R'
+        return True
+        
     else : 
-        print('\nPosição Invalida\n')
-        return False
-
+            print('\nPosição Invalida\n')
+            return False
 
 ## Determinar vitoria 
 
@@ -241,7 +225,7 @@ def escolhercor(tabuleiro):
         elif (cor == 'Y' or cor == 'y'):
             move = jogada_amarelas(tabuleiro)
         elif (cor == 'R' or cor == 'r'):
-            move = jogada_vermelhas(tabuleiro)
+            move = jogada_vermelhas(tabuleiro,)
         else:
             print("\n\nCor invalida, tente novamente.")
             showtabuleiro(tabuleiro)
@@ -386,8 +370,8 @@ def menu():
 print("\nJOGO DOS SEMÁFOROS")
 print("\n\n Realizado por: ")
 print("\nal78202 - Miguel Pinto")
-print("al78202 - Bárbara Ferreira")
-print("al78202 - José Pedro Cruz")
+print("al78181 - Bárbara Ferreira")
+print("al80121 - José Pedro Cruz")
 
 i = input("\n\nPressione qualquer tecla para iniciar. ")
 menu()
