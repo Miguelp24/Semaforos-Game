@@ -35,11 +35,13 @@ def showtabuleiro(tabuleiro):
 ######
 
 #Jogadas das peças Verdes
-def jogada_verdes(tabuleiro, verdes):
+def jogada_verdes(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
-    if verdes != 0:
+    verdes = int
+
+    if verdes <= 8:
         move = input("\nOnde quer jogar?: ")
         valida = '0'
 
@@ -49,16 +51,13 @@ def jogada_verdes(tabuleiro, verdes):
                 if key == move :
                     valida = '1'
 
-        if (verdes == 0):
-            print("Acabaram as peças verdes")
-            return False
-
         if tabuleiro[move] != False:
             print('\nNão podes jogar ai\n')
             return False
+        
         elif valida:
             tabuleiro[move] = 'G'
-            verdes = verdes - 1
+            verdes = verdes + 1
             print(verdes)
             return True
             
@@ -70,8 +69,11 @@ def jogada_verdes(tabuleiro, verdes):
         print("Já esgotou estas peças")
     
 
+
+
+
 #Jogadas das peças Amarelas
-def jogada_amarelas(tabuleiro, amarelas):
+def jogada_amarelas(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
@@ -102,7 +104,7 @@ def jogada_amarelas(tabuleiro, amarelas):
 
 
 #Jogadas das peças Vermelhas
-def jogada_vermelhas(tabuleiro, vermelhas):
+def jogada_vermelhas(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
@@ -228,18 +230,18 @@ def changeplayer(p1, p2, p1_name, p2_name):
         print("--- Player " + p2_name + " ---\n")
 
 
-def escolhercor(tabuleiro, verdes, amarelas, vermelhas):
+def escolhercor(tabuleiro):
     
     while True:
         cor = input("Qual a cor que quer jogar? \n(G) Verde \n(Y) Amarelo \n(R) Vermelho \n: ")
         
 
         if (cor == 'G' or cor == 'g'):
-            move = jogada_verdes(tabuleiro, verdes)
+            move = jogada_verdes(tabuleiro)
         elif (cor == 'Y' or cor == 'y'):
-            move = jogada_amarelas(tabuleiro, amarelas)
+            move = jogada_amarelas(tabuleiro)
         elif (cor == 'R' or cor == 'r'):
-            move = jogada_vermelhas(tabuleiro, vermelhas)
+            move = jogada_vermelhas(tabuleiro)
         else:
             print("\n\nCor invalida, tente novamente.")
             showtabuleiro(tabuleiro)
@@ -260,9 +262,7 @@ def game():
     p1 = False
     p2 = False
 
-    verdes = 8
-    amarelas = 8
-    vermelhas = 8
+
     
     while (fim == True):
         showtabuleiro(tabuleiro)
@@ -279,7 +279,7 @@ def game():
             p1 = False
             p_name = p2_name
         
-        escolhercor(tabuleiro, verdes, amarelas, vermelhas)
+        escolhercor(tabuleiro)
         
         fim = vitoria(tabuleiro)
 
