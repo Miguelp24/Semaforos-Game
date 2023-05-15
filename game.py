@@ -39,9 +39,9 @@ def jogada_verdes(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
-    verdes = int
+    verdes = 8
 
-    if verdes <= 8:
+    if verdes != 0:
         move = input("\nOnde quer jogar?: ")
         valida = '0'
 
@@ -57,7 +57,7 @@ def jogada_verdes(tabuleiro):
         
         elif valida:
             tabuleiro[move] = 'G'
-            verdes = verdes + 1
+            verdes = verdes - 1
             print(verdes)
             return True
             
