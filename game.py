@@ -38,13 +38,6 @@ def jogada_verdes(tabuleiro):
     lin = ['1','2','3']
     col = ['A','B','C','D']
 
-<<<<<<< HEAD
-    verdes = 8
-
-    if verdes != 0:
-        move = input("\nOnde quer jogar?: ")
-        valida = '0'
-=======
     
     move = input("\nOnde quer jogar?: ")
     valida = '0'
@@ -54,23 +47,14 @@ def jogada_verdes(tabuleiro):
             key = str(r) + str(c)
             if key == move :
                 valida = '1'
->>>>>>> faeca7c71e78ede8abc05b0642b75acd713d4e77
 
     if tabuleiro[move] != False:
         print('\nNão podes jogar ai\n')
         return False
         
-<<<<<<< HEAD
-        elif valida:
-            tabuleiro[move] = 'G'
-            verdes = verdes - 1
-            print(verdes)
-            return True
-=======
     elif valida:
         tabuleiro[move] = 'G'
         return True 
->>>>>>> faeca7c71e78ede8abc05b0642b75acd713d4e77
             
     else : 
         print('\nPosição Invalida\n')
